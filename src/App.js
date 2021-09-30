@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>e-commerce para el curso de React</p> 
-        <p>Commit</p> 
+        <p>Commit1</p> 
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
