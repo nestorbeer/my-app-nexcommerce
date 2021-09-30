@@ -7,6 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>e-commerce para el curso de React</p> 
+        <p>Probnando commit y push</p> 
       </header>
     </div>
   );
