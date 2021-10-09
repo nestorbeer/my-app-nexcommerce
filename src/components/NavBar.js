@@ -2,6 +2,7 @@ import logo from '../logo.svg';
 import React from 'react';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CarttWidget from './CartWidget.js'
 const alertName = () => alert('hola')
 
 function NavBar(props) {
@@ -26,6 +27,7 @@ function NavBar(props) {
         <Nav.Link href="#">Accesorios</Nav.Link>
       </Nav>
       </Container>
+      <CarttWidget cantidad="0" />
     </Navbar>
 </div>
   )
