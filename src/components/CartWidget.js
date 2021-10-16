@@ -6,7 +6,7 @@ function CartWidget(props)
 {
     return(
         <div className="CartWidget">
-            <img src={icon} alt="" className="CartWidget-logo"></img> Productos: {props.cantidad}
+            <img src={icon} alt="" className="CartWidget-logo" ></img> Productos: {props.quantity}
         </div>
 
     )
