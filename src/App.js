@@ -23,26 +23,21 @@ function App() {
 
   const [counter, setCounter] = useState(0)
   
-  const addCounter = () =>
+  const addCounter = (cantidad) =>
   {
-    setCounter(counter + 1)
+    setCounter(counter + cantidad)
   }
 
-  const decreaceCounter = () =>
+  const decreaceCounter = (cantidad) =>
   {
-    (counter>0)?setCounter(counter - 1):alert('No puede ser menor a cero');
+    setCounter(counter - cantidad)
   }
 
-  useEffect(()=>
-  {
-    console.log('Me ejecute')
-
-  })
   return (
     <div className="App">
       <NavBar brand={title} ontitle={handleTitle} quantity={counter} />
       <header className="App-header">
-        <ItemListContainer add={addCounter} decreace={decreaceCounter} />
+        <ItemListContainer onAdd={addCounter} onDecreace={decreaceCounter} quantity={counter} />
       </header>
     </div>
   );

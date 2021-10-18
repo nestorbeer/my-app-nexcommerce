@@ -6,43 +6,67 @@ import { FormControl } from 'react-bootstrap';
 
 function ItemCount (props)
 {
+    //Stocl inicial
     const [stock, setStock] = useState(props.stock)
-    const [count, setCount] = useState(props.initial)
+    //Cantidad de items a agregar
+    const [count, setCount] = useState(props.quantity)
+
+    //Cantidad ingresada en el textBox
+    const [countIn, setCountIn] = useState()
+    
 
     const showErrorMessage=(message)=>{
         alert(message);
     }
     const addCount = () => 
     {
-        (count < stock)?setCount(count + 1):showErrorMessage('Supera el stock.');
+        if(countIn != undefined)
+        {
+            if(Number(countIn) < Number(stock)){
+                setCountIn(Number(countIn) + 1)
+            }
+            else{
+                showErrorMessage('Supera el stock.');
+            }
+        }
+        else
+        {
+            setCountIn(Number(1));
+        }
     }
 
     const decreaceCount = () =>
     {
-        (count > 0)?setCount(count - 1):showErrorMessage('La cantidad no puede ser menor a cero.');
+        if(countIn != undefined)
+        {
+            if(Number(countIn)> Number(0)){
+                setCountIn(Number(countIn) - 1)
+            }
+            else{
+                showErrorMessage('La cantidad no puede ser menor a cero.');
+            }
+        }
+        else
+        {
+            setCountIn(Number(1));
+        }
     }
     
-    const addProduct = () =>
-    {
-        (count < stock)?props.add():showErrorMessage('Supera el stock.');
+    const addProduct = () =>{
+        //console.log('Item count'+ count)
+        props.onAdd(Number(countIn))
+        //props.setCount(count)
+        //(count < stock)?props.add(count):showErrorMessage('Supera el stock.');
     }
     return(
         <div>
             <div onClick={decreaceCount}>-</div>
-            <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text id="basic-addon1"></InputGroup.Text>
-            <FormControl
-                placeholder="Cantidad"
-                aria-label="Cantidad"
-                aria-describedby="basic-addon1"
-                value={count}
-            />
-            </InputGroup>
+            <input onChange={event => setCountIn(event.target.value)} value={countIn} />
             <div onClick={addCount}>+</div>
-            <ButtonGroup aria-label="Basic example">
-            <Button variant="primary" onClick={addProduct}>Agregar</Button>
-            <Button variant="secondary" onClick={props.decreace}>Quitar</Button>
-            </ButtonGroup>
+            <button onClick={()=>{
+                console.log('Aprete' + count + '-' + countIn);
+                addProduct();
+            }}>Agregar </button>
         </div>
     )
 }

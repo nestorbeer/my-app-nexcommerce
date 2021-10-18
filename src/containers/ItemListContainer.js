@@ -1,15 +1,17 @@
 import ItemCount from '../components/ItemCount.js';
 import Products from '../components/Products.js';
+import ItemList from './ItemList.js';
 
 function ItemListContainer(props)
 {
+    const onAdd = (cantidad) =>
+    {
+        //console.log('itemlistcontainer' + cantidad)
+        props.onAdd(cantidad)
+    }
     return(
         <div>
-            <ItemCount stock={5} initial={1} add={props.add} decreace={props.decreace}/>
-            <ItemCount stock={2} initial={1} add={props.add} decreace={props.decreace}/>
-            <ItemCount stock={3} initial={1} add={props.add} decreace={props.decreace}/>
-            <ItemCount stock={5} initial={1} add={props.add} decreace={props.decreace}/>
-            <ItemCount stock={5} initial={0} add={props.add} decreace={props.decreace}/>
+            <ItemList onAdd={onAdd} quantity={props.quantity}></ItemList>
         </div>
     )
 }
