@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
 
 function Item(props)
@@ -9,8 +10,9 @@ function Item(props)
     }
     return(
         <div>
-            <p>{props.name} "Stock: " {props.stock}</p>
+            <p>{props.name} {(props.stock>0)? "Stock: " + props.stock:'Te quedaste sin stock' }</p>
             <ItemCount stock={props.stock} initial={props.initial} onAdd={onAdd} quantity={props.quantity}/>
+            <Link to={'/items/' + props.itemId}>Ver detalle</Link>
         </div>
     )
 }

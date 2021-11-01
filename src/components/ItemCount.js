@@ -12,8 +12,7 @@ function ItemCount (props)
     const [count, setCount] = useState(props.quantity)
 
     //Cantidad ingresada en el textBox
-    const [countIn, setCountIn] = useState()
-    
+    const [countIn, setCountIn] = useState(0)
 
     const showErrorMessage=(message)=>{
         alert(message);
@@ -61,12 +60,12 @@ function ItemCount (props)
     return(
         <div>
             <div onClick={decreaceCount}>-</div>
-            <input onChange={event => setCountIn(event.target.value)} value={countIn} />
+            <input onChange={event => setCountIn(event.target.value)} value={countIn}/>
             <div onClick={addCount}>+</div>
-            <button onClick={()=>{
+            <Button variant="outline-danger"  size="sm" onClick={()=>{
                 console.log('Aprete' + count + '-' + countIn);
                 addProduct();
-            }}>Agregar </button>
+            }}>Agregar </Button>
         </div>
     )
 }
