@@ -62,7 +62,7 @@ function ItemCount (props)
             <div onClick={decreaceCount}>-</div>
             <input onChange={event => setCountIn(event.target.value)} value={countIn}/>
             <div onClick={addCount}>+</div>
-            <Button variant="outline-danger"  size="sm" onClick={()=>{
+            <Button variant="primary"  size="lg" onClick={()=>{
                 console.log('Aprete' + count + '-' + countIn);
                 addProduct();
             }}>Agregar </Button>

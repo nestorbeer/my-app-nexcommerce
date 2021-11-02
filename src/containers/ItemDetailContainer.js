@@ -6,7 +6,6 @@ import ItemList from './ItemList.js';
 
 function ItemDetailContainer(props)
 {
-    const {itemId} = useParams();
     const onAdd = (cantidad) =>
     {
         //console.log('itemlistcontainer' + cantidad)
@@ -14,7 +13,7 @@ function ItemDetailContainer(props)
     }
     return(
         <div>
-            <ItemDetail onAdd={onAdd} quantity={props.quantity} itemId={itemId}></ItemDetail>
+            <ItemDetail stock={props.stock} initial={props.initial} onAdd={onAdd} quantity={props.quantity}></ItemDetail>
         </div>
     )
 }

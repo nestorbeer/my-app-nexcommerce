@@ -27,9 +27,15 @@
 .App-link {
   color: #61dafb;
 }
-img{
-  width: 370;
-    height: 460;
+.App-container {
+  /* background-image: url("../../assets/abstract-pastel-holographic-textured-background.jpg");
+  background-repeat: repeat; */
+  background-color: #92cbfa;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 @keyframes App-logo-spin {
   from {
@@ -38,4 +44,8 @@ img{
   to {
     transform: rotate(360deg);
   }
+}
+.IMGPROD{
+  width: 171;
+  height: 180;
 }

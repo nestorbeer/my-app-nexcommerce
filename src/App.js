@@ -33,12 +33,12 @@ function App() {
           <Home />
       </Route>
       <Route path="/categories/:categoryId">
-        <div className="App">
+        <div className="App-container">
             <ItemListContainer onAdd={addCounter} onDecreace={decreaceCounter} quantity={counter} />
         </div>
       </Route>
       <Route path="/items/:itemId" >
-          <div className="App">
+          <div className="App-container">
             <ItemDetailContainer onAdd={addCounter} onDecreace={decreaceCounter} quantity={counter} />
           </div>
       </Route>

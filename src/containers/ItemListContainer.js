@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from "react";
 import Item from "../components/Item";
 import {products} from '../Products'
-
+import './ItemDetailContainer.css'
 function ItemListContainer(props)
 {
     const {categoryId} = useParams();
@@ -22,7 +22,7 @@ function ItemListContainer(props)
             setLoading(false)
             }
         )
-    },[]);
+    },[categoryId]);
 
     const onAdd = (cantidad) =>
     {
@@ -30,10 +30,10 @@ function ItemListContainer(props)
         props.onAdd(cantidad)
     }
     return(
-        <div>
+        <div className="listaProductos">
             {
                 items?.filter(item => item.categoryId == categoryId)
-                .map(({ id, name, price, stock, categoryId }) => <Item key={id} itemId={id} name={name} stock={stock} initial={1} onAdd={onAdd} quantity={props.quantity} />
+                .map(({ id, name, price, stock, categoryId, url }) => <Item key={id} itemId={id} name={name} stock={stock} initial={1} onAdd={onAdd} quantity={props.quantity} itemUrl={url} />
                 )
             }
             {loading && <h1>Cargarando productos</h1>} 
