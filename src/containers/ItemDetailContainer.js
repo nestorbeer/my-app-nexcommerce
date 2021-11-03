@@ -1,8 +1,4 @@
-import { useParams } from 'react-router';
-import ItemCount from '../components/ItemCount.js';
 import ItemDetail from '../components/ItemDetail.js';
-import Products from '../components/Products.js';
-import ItemList from './ItemList.js';
 
 function ItemDetailContainer(props)
 {

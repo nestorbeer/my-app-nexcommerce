@@ -1,4 +1,3 @@
-import logo from '../logo.svg';
 import logoElDon from '../logo_eldon.gif';
 import React from 'react';
 import { Container, Navbar, Nav } from 'react-bootstrap';

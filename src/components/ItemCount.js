@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { Button } from 'react-bootstrap';
-import { ButtonGroup } from 'react-bootstrap';
-import { InputGroup } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
 
 function ItemCount (props)
 {
     //Stocl inicial
-    const [stock, setStock] = useState(props.stock)
+    const [stock] = useState(props.stock)
     //Cantidad de items a agregar
-    const [count, setCount] = useState(props.quantity)
+    const [count] = useState(props.quantity)
 
     //Cantidad ingresada en el textBox
     const [countIn, setCountIn] = useState(0)
@@ -19,7 +16,7 @@ function ItemCount (props)
     }
     const addCount = () => 
     {
-        if(countIn != undefined)
+        if(countIn !== undefined)
         {
             if(Number(countIn) < Number(stock)){
                 setCountIn(Number(countIn) + 1)
@@ -36,7 +33,7 @@ function ItemCount (props)
 
     const decreaceCount = () =>
     {
-        if(countIn != undefined)
+        if(countIn !== undefined)
         {
             if(Number(countIn)> Number(0)){
                 setCountIn(Number(countIn) - 1)

@@ -1,10 +1,7 @@
-import { useState } from "react";
 import ItemCount from "./ItemCount";
 import {products} from '../Products'
-import Image from 'react-bootstrap/Image'
 import './ItemDetail.css';
 import { useParams } from 'react-router';
-import { Col, Container, Row } from "react-bootstrap";
 
 function ItemDetail(props)
 {
@@ -16,7 +13,7 @@ function ItemDetail(props)
     return(
         <div className="item-detail">
             {
-            products?.filter(item => item.id == itemId)
+            products?.filter(item => parseInt(item.id) === parseInt(itemId))
                 .map(({ id, name, descrp, price, stock, categoryId, url }, index) => 
                 <div>
                     <div className="detalle">

@@ -1,18 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
 import './components/NavBar.js';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import NavBar from './components/NavBar.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './containers/ItemListContainer';
 import ItemDetailContainer from './containers/ItemDetailContainer.js';
 import Home from './components/Home';
-import { BrowserRouter, Switch, Route, Link  } from 'react-router-dom';
+import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import {categories} from './components/Categories'
 
 function App() {
-  const [title, setTitle] = useState('Tienda EL DON.')
-
+  //const [title, setTitle] = useState('Tienda EL DON.')
+  const title = "Tienda EL DON"
+  
   const [counter, setCounter] = useState(0)
   
   const addCounter = (cantidad) =>

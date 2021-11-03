@@ -32,7 +32,7 @@ function ItemListContainer(props)
     return(
         <div className="listaProductos">
             {
-                items?.filter(item => item.categoryId === categoryId)
+                items?.filter(item => parseInt(item.categoryId) === parseInt(categoryId))
                 .map(({ id, name, price, stock, categoryId, url }) => <Item key={id} itemId={id} name={name} stock={stock} initial={1} onAdd={onAdd} quantity={props.quantity} itemUrl={url} />
                 )
             }
