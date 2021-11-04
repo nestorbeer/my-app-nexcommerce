@@ -2,6 +2,7 @@ import ItemCount from "./ItemCount";
 import {products} from '../Products'
 import './ItemDetail.css';
 import { useParams } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ItemDetail(props)
 {

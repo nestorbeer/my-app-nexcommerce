@@ -1,4 +1,5 @@
 import ItemDetail from '../components/ItemDetail.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ItemDetailContainer(props)
 {

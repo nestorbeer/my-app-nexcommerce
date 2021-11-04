@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import Item from "../components/Item";
 import {products} from '../Products'
 import './ItemDetailContainer.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {  Container, Row } from 'react-bootstrap';
+
 function ItemListContainer(props)
 {
     const {categoryId} = useParams();
@@ -30,14 +33,18 @@ function ItemListContainer(props)
         props.onAdd(cantidad)
     }
     return(
-        <div className="listaProductos">
+        <Container>
+          <Row md={12}>
             {
                 items?.filter(item => parseInt(item.categoryId) === parseInt(categoryId))
                 .map(({ id, name, price, stock, categoryId, url }) => <Item key={id} itemId={id} name={name} stock={stock} initial={1} onAdd={onAdd} quantity={props.quantity} itemUrl={url} />
                 )
             }
             {loading && <h1>Cargarando productos</h1>} 
-        </div>
+          </Row>
+        </Container>
+
+        
     )
 }
 export default ItemListContainer;

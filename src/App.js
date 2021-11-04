@@ -26,6 +26,7 @@ function App() {
   }
   
   return (
+    <div className="App">
     <BrowserRouter>
     <NavBar brand={title} quantity={counter} categories={categories}/>
     <Switch>
@@ -44,6 +45,7 @@ function App() {
       </Route>
     </Switch>
 </BrowserRouter>
+</div>
   );
 }
 
