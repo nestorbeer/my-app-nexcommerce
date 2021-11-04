@@ -40,7 +40,7 @@ function ItemListContainer(props)
                 .map(({ id, name, price, stock, categoryId, url }) => <Item key={id} itemId={id} name={name} stock={stock} initial={1} onAdd={onAdd} quantity={props.quantity} itemUrl={url} />
                 )
             }
-            {loading && <h1>Cargarando productos</h1>} 
+            {loading && <h6>Cargarando...</h6>} 
           </Row>
         </Container>
 

@@ -1,9 +1,10 @@
+import { Image } from "react-bootstrap";
+
 function Home(props)
 {
     return(
-        <div className="App">
-            Aca va el contenido de la home 
-            Banner
+        <div>
+            <Image alt="" src="https://www.eldon.com.ar/media/wysiwyg/banner2.jpg"></Image>
         </div>
     )   
 }
