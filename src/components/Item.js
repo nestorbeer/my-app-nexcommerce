@@ -12,10 +12,9 @@ function Item(props)
     }
     return(
         <Col md={3}>
-            <p>{props.name} {(props.stock>0)? "Stock: " + props.stock:'Te quedaste sin stock' }</p>
-            <div className="item-detail-img">
+            
             <Link to={'/items/' + props.itemId}><Image  alt="" className="detail-img" src={props.itemUrl} /></Link>
-            </div>
+            <p>{props.name} {(props.stock>0)? "Stock: " + props.stock:'Te quedaste sin stock' }</p>
             <ItemCount stock={props.stock} initial={props.initial} onAdd={onAdd} quantity={props.quantity}/>
             <Link to={'/items/' + props.itemId}>Ver detalle</Link>
         </Col>
