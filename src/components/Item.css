@@ -25,3 +25,11 @@
   .descripcion {
     width: 10rem;
   }
+   .item-col-container{
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     text-align: center;
+     color: rgb(173, 8, 8);
+     background: rgb(223, 221, 221);
+     border:rgb(155, 154, 154);
+     border-color: white;
+   }

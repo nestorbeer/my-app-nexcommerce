@@ -8,6 +8,7 @@ import ItemDetailContainer from './containers/ItemDetailContainer.js';
 import Home from './components/Home';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import {categories} from './components/Categories'
+import Cart from './components/Cart';
 
 function App() {
   //const [title, setTitle] = useState('Tienda EL DON.')
@@ -24,28 +25,32 @@ function App() {
   {
     setCounter(counter - cantidad)
   }
-  
+  const resetCounter = () =>{
+    setCounter(0)
+  }
   return (
-    <div className="App">
-    <BrowserRouter>
-    <NavBar brand={title} quantity={counter} categories={categories}/>
-    <Switch>
-      <Route exact path="/">
-          <Home />
-      </Route>
-      <Route path="/categories/:categoryId">
-        <div className="App-container">
-            <ItemListContainer onAdd={addCounter} onDecreace={decreaceCounter} quantity={counter} />
-        </div>
-      </Route>
-      <Route path="/items/:itemId" >
-          <div className="App-container">
-            <ItemDetailContainer onAdd={addCounter} onDecreace={decreaceCounter} quantity={counter} />
-          </div>
-      </Route>
-    </Switch>
-</BrowserRouter>
-</div>
+      <BrowserRouter>
+        <NavBar brand={title} quantity={counter} categories={categories}/>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/home">
+            <Home />
+          </Route>
+          <Route path="/categories/:categoryId">
+              <ItemListContainer onAdd={addCounter} onDecreace={decreaceCounter} quantity={counter} />
+          </Route>
+          <Route path="/items/:itemId" >
+            <div className="App-container">
+              <ItemDetailContainer onAdd={addCounter} onDecreace={decreaceCounter} quantity={counter} />
+            </div>
+          </Route>
+          <Route exact path="/cart" >
+              <Cart resetCounter={resetCounter}/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
   );
 }
 

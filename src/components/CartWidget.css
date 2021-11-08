@@ -1,5 +1,9 @@
 .CartWidget-logo {
-    height: 20px;
-    padding-left: 0px;
+    height: 30px;
+    padding-left: 2px;
+    padding-top: 0.5px;
     pointer-events: none;
+}
+.CartWidget-container {
+    padding-top: 0.5rem;
 }

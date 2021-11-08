@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 function ItemCount (props)
 {
     //Stocl inicial
     const [stock] = useState(props.stock)
     //Cantidad de items a agregar
-    const [count] = useState(props.quantity)
+    const [count, setCount] = useState(props.quantity)
 
     //Cantidad ingresada en el textBox
     const [countIn, setCountIn] = useState(0)
@@ -20,6 +21,7 @@ function ItemCount (props)
         {
             if(Number(countIn) < Number(stock)){
                 setCountIn(Number(countIn) + 1)
+                setCount(Number(countIn) + 1)
             }
             else{
                 showErrorMessage('Supera el stock.');
@@ -54,6 +56,7 @@ function ItemCount (props)
         //props.setCount(count)
         //(count < stock)?props.add(count):showErrorMessage('Supera el stock.');
     }
+    
     return(
         <div>
             <div onClick={decreaceCount}>-</div>
