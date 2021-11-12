@@ -21,9 +21,10 @@ export const CartProvider = ({ children }) => {
 
   const removeItem = (idItem) => {
     // remover el Item del array y setear el cart
-    const newCar = []
+    let newCar = []
     cart.map(({id},index)=>(id===idItem)?newCar=[...newCar, cart.filter(itemArray => parseInt(id) === parseInt(itemArray.id))]:console.log('nada')
     )
+    setCart(newCar)
   };
 
   const clear = () =>{
