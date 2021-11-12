@@ -1,6 +1,6 @@
 .list-container {
-    /* background-image: url("../../assets/abstract-pastel-holographic-textured-background.jpg");
-    background-repeat: repeat; */
+    background-image: url("./assets/fondo.jpg");
+    background-repeat: repeat; 
     display: flex;
     flex-direction: row;
     justify-content: center;

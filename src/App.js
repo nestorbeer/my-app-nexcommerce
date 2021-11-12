@@ -9,6 +9,8 @@ import Home from './components/Home';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import {categories} from './components/Categories'
 import Cart from './components/Cart';
+import { Container } from 'react-bootstrap';
+import {CartProvider} from './contexts/CartContext'
 
 function App() {
   //const [title, setTitle] = useState('Tienda EL DON.')
@@ -29,6 +31,7 @@ function App() {
     setCounter(0)
   }
   return (
+    <CartProvider>
       <BrowserRouter>
         <NavBar brand={title} quantity={counter} categories={categories}/>
         <Switch>
@@ -49,8 +52,12 @@ function App() {
           <Route exact path="/cart" >
               <Cart resetCounter={resetCounter}/>
           </Route>
+          <Route path="/*" >
+              <Container><h1><b>Page not found 404</b></h1></Container>
+          </Route>
         </Switch>
       </BrowserRouter>
+    </CartProvider>
   );
 }
 

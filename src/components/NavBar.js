@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 function NavBar(props) {
   return (
-    <Container>
+    <Container fluid>
       <Row>
         <Col xs={8} md={10} lg={10}>
           <Navbar bg="light" expand="lg">

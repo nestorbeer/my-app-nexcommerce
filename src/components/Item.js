@@ -4,18 +4,22 @@ import './Item.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Image } from "react-bootstrap";
 import { useState } from "react";
+import { useCart} from '../contexts/CartContext'
 
 function Item(props)
 {
     const [isAdded, setAdded] = useState(true);
     const [quantity, setQuantity] = useState();
+    const {addItem} = useCart();
 
     const onAdd =(cantidad)=>{
         //console.log('Item' + cantidad)
         setAdded(false)
         setQuantity(cantidad)
         props.onAdd(cantidad)
+        addItem(props.itemId, cantidad)
     }
+
     return(
         <Col md={12} lg={12} className="item-col-container">
                         <Link to={'/items/' + props.itemId}><Image  alt="" className="detail-img" src={props.itemUrl} /></Link>        

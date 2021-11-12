@@ -5,6 +5,7 @@ import {products} from '../Products'
 import './ItemDetailContainer.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {  Col, Container, Row } from 'react-bootstrap';
+import Loader from '../components/loader';
 
 function ItemListContainer(props)
 {
@@ -33,14 +34,14 @@ function ItemListContainer(props)
         props.onAdd(cantidad)
     }
     return(
-        <Container>
+        <Container fluid>
           <Row>
             {
                 items?.filter(item => parseInt(item.categoryId) === parseInt(categoryId))
                 .map(({ id, name, price, stock, categoryId, url }) => <Col xs={12} md={6} lg={3}><Item key={id} itemId={id} name={name} stock={stock} initial={1} onAdd={onAdd} quantity={props.quantity} itemUrl={url} /></Col>
                 )
             }
-            {loading && <h6>Cargarando...</h6>} 
+            {loading && <Loader />}
           </Row>
         </Container>
 
