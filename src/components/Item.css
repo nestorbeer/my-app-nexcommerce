@@ -8,9 +8,11 @@
   }
   
   .detail-img {
-    width: 20rem;
+    width: 25rem;
     height: 25rem;
-    padding: 2rem;
+    padding-left: 2rem;
+    text-align: center;
+    
   }
   
   .detalle {
@@ -21,7 +23,15 @@
     padding: 0.5rem;
     width: 50rem;
   }
-  
+  .card{
+    width: '300rem';
+    background-color: transparent;
+    border-color: transparent;
+
+  }
+  .cardTitle{
+    text-align: center;
+  }
   .descripcion {
     width: 10rem;
   }
@@ -29,7 +39,8 @@
      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
      text-align: center;
      color: rgb(173, 8, 8);
-     background: rgb(223, 221, 221);
-     border:rgb(155, 154, 154);
-     border-color: white;
+     border: 1px;
+     border-color:black;
+     display: flex;
+     flex-direction: column;
    }

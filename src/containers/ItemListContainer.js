@@ -28,17 +28,12 @@ function ItemListContainer(props)
         )
     },[categoryId]);
 
-    const onAdd = (cantidad) =>
-    {
-        //console.log('itemlistcontainer' + cantidad)
-        props.onAdd(cantidad)
-    }
     return(
         <Container fluid>
           <Row>
             {
                 items?.filter(item => parseInt(item.categoryId) === parseInt(categoryId))
-                .map(({ id, name, price, stock, categoryId, url }) => <Col xs={12} md={6} lg={3}><Item key={id} itemId={id} name={name} stock={stock} initial={1} onAdd={onAdd} quantity={props.quantity} itemUrl={url} /></Col>
+                .map(({ id, name, price, stock, categoryId, url }) => <Col xs={12} md={6} lg={3}><Item key={id} itemId={id} name={name} stock={stock} initial={1} itemUrl={url}/></Col>
                 )
             }
             {loading && <Loader />}

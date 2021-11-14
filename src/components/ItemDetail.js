@@ -5,15 +5,19 @@ import { useParams } from 'react-router';
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
+import { useCart} from '../contexts/CartContext'
 
 function ItemDetail(props)
 {
     const {itemId} = useParams();
     const [isAdded, setAdded] = useState(true);
-    const onAdd =(cantidad)=>{
+    const {addItem} = useCart();
+
+    const onAdd =(id,cantidad)=>{
         //console.log('Item' + cantidad)
         setAdded(false)
-        props.onAdd(cantidad)
+        const message = addItem(itemId, cantidad)
+        alert(message)
     }
     return(
         <div className="item-detail">
@@ -28,7 +32,7 @@ function ItemDetail(props)
                     <div className="item-detail-img">
                         <img className="detail-img" alt="" src={url} />
                     </div>
-                    {isAdded? <ItemCount stock={stock} initial={1} onAdd={onAdd} quantity={props.quantity}/> : <Link to="/cart">Finalizar compra</Link>}
+                    {isAdded? <ItemCount stock={stock} initial={1} onAdd={onAdd}/> : <Link to="/cart">Finalizar compra</Link>}
                 </div>
                 )
             }

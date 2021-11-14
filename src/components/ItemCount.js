@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Button } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function ItemCount (props)
 {
+
     //Stocl inicial
     const [stock] = useState(props.stock)
     //Cantidad de items a agregar
-    const [count, setCount] = useState(props.quantity)
 
     //Cantidad ingresada en el textBox
     const [countIn, setCountIn] = useState(0)
@@ -15,13 +16,14 @@ function ItemCount (props)
     const showErrorMessage=(message)=>{
         alert(message);
     }
+
     const addCount = () => 
     {
         if(countIn !== undefined)
         {
             if(Number(countIn) < Number(stock)){
                 setCountIn(Number(countIn) + 1)
-                setCount(Number(countIn) + 1)
+
             }
             else{
                 showErrorMessage('Supera el stock.');
@@ -50,23 +52,23 @@ function ItemCount (props)
         }
     }
     
-    const addProduct = () =>{
-        //console.log('Item count'+ count)
-        props.onAdd(Number(countIn))
-        //props.setCount(count)
-        //(count < stock)?props.add(count):showErrorMessage('Supera el stock.');
+    const addProduct = (itemId) =>{
+        props.onAdd(itemId, Number(countIn))
     }
     
     return(
-        <div>
-            <div onClick={decreaceCount}>-</div>
-            <input onChange={event => setCountIn(event.target.value)} value={countIn}/>
-            <div onClick={addCount}>+</div>
-            <Button variant="primary"  size="lg" onClick={()=>{
-                console.log('Aprete' + count + '-' + countIn);
-                addProduct();
+        <Container>
+            <Row>
+                <Col size="xs">
+                    <Button variant="success" size="xs" onClick={decreaceCount}>-</Button>
+                        <input onChange={event => setCountIn(event.target.value)} value={countIn}/>
+                    <Button variant="success" size="xs" onClick={addCount}>+</Button>
+                </Col>
+            </Row>
+            <Button variant="primary"  size="md" onClick={()=>{
+                addProduct(props.itemId);
             }}>Agregar </Button>
-        </div>
+        </Container>
     )
 }
 
