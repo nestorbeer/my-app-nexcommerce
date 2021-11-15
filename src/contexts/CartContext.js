@@ -27,8 +27,8 @@ export const CartProvider = ({ children }) => {
 
 const removeItem = (idItem) => {
     // remover el Item del array y setear el cart
-    let newCar = cart.filter(itemArray=>parseInt(idItem) !== parseInt(itemArray.id))
-    setCart(newCar)
+    const newCart = cart.filter(itemArray=>parseInt(idItem) !== parseInt(itemArray.id))
+    setCart(newCart)
 }
 
 const clearCart = () =>{
@@ -41,14 +41,19 @@ const isInCart = (id) =>{
 
 const getQuantity = ()=>{
     let cantidad = 0
-    cart.forEach(itemArray =>{
-        cantidad = cantidad + itemArray.cantidad
-    })
+    cart.forEach(itemArray =>{cantidad += itemArray.cantidad})
     return cantidad
 }
 
+const getTotal = ()=>{
+    let total = 0
+    cart.forEach(itemArray => {total += (itemArray.price * itemArray.cantidad)});
+    //total = cart.reduce((a, b) => ({cantidad: a.cantidad + b.cantidad}));
+    return total
+}
+
 return (
-    <CartContext.Provider value={{ cart, addItem, removeItem, clearCart, isInCart,getQuantity  }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem, clearCart, isInCart,getQuantity,getTotal  }}>
       {children}
     </CartContext.Provider>
   );

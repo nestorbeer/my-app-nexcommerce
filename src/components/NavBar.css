@@ -21,3 +21,7 @@
   .NavBar-li-a:hover {
     background-color: #111;
   }
+
+  .nav-container{
+    width: 100vw;
+  }

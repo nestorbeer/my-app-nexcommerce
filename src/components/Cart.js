@@ -2,16 +2,13 @@ import { Button, Container, Table } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 
 function Cart(props){
-    const {clearCart} = useCart();
-    const {cart} = useCart();
-    const {getQuantity} = useCart();
+    const {cart, getQuantity, getTotal, clearCart} = useCart();
     const {removeItem} = useCart();
-    const quantity = getQuantity()
-    let total = 0
+    
+    const quantity = getQuantity();
+    const total = getTotal();
+
     if (quantity>0) {
-        cart.forEach(itemArray => {
-            total = total + (itemArray.price * itemArray.cantidad)
-        });
         return(
             <Container>
              <br/>
