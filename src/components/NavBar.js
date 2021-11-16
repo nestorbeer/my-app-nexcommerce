@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CarttWidget from './CartWidget.js'
 import NavItem from '@restart/ui/esm/NavItem';
 import { Link } from 'react-router-dom';
+import CartSearcher from './CartSearcher';
 
 function NavBar(props) {
   return (
@@ -21,7 +22,8 @@ function NavBar(props) {
                     props.categories && props.categories.map((category, index) =><NavItem key={index} eventkey={1} href={category.page}><Nav.Link as={Link} to={category.page}>{category.nombre}</Nav.Link></NavItem>)      
                   }
                 </Nav>
-                <Link to="/cart"><CarttWidget quantity={props.quantity} add={props.add} decreace={props.decreace} className="d-flex"/></Link>
+                <CartSearcher></CartSearcher>
+                <Link style={{textDecoration: 'none' }} to="/cart"><CarttWidget quantity={props.quantity} add={props.add} decreace={props.decreace} className="d-flex"/></Link>
                 </Navbar.Collapse>
           </Container>
           </Navbar>

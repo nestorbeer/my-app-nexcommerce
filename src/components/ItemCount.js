@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 function ItemCount (props)
 {
@@ -53,16 +54,20 @@ function ItemCount (props)
     }
     
     const addProduct = (itemId) =>{
+        if(Number(countIn)===0){
+            alert('La cantidad no puede ser cero');
+            return
+        }
         props.onAdd(itemId, Number(countIn))
     }
     
     return(
-        <Container>
+        <Container className="count-container">
             <Row>
                 <Col size="xs">
-                    <Button variant="success" size="xs" onClick={decreaceCount}>-</Button>
-                        <input onChange={event => setCountIn(event.target.value)} value={countIn}/>
-                    <Button variant="success" size="xs" onClick={addCount}>+</Button>
+                    <FontAwesomeIcon icon={faMinus} onClick={decreaceCount} style={{fontSize: 'x-large'}} />{' '}
+                        <input style={{ maxWidth: '2.5rem', textAlign:"center" }} onChange={event => setCountIn(event.target.value)} value={countIn}/>{' '}
+                    <FontAwesomeIcon icon={faPlus} onClick={addCount} style={{fontSize: 'x-large'}} />
                 </Col>
             </Row>
             <Button variant="primary"  size="md" onClick={()=>{

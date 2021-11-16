@@ -36,11 +36,11 @@ function Cart(props){
                             <td>
                                 {cantidad}
                             </td>
-                            <td>
-                                {price}
+                            <td align="right">
+                                {'$' +price}
                             </td>
-                            <td>
-                                {price * cantidad}
+                            <td align="right">
+                                {'$' + price * cantidad}
                             </td>
                             <td align="center">
                                 <Button variant="primary"  size="xs" onClick={()=>{
@@ -57,7 +57,7 @@ function Cart(props){
                     <td><b>Total de la compra</b></td>
                     <td></td>
                     <td></td>
-                    <td><b>{total}</b></td>
+                    <td align="right"><b>{'$' +total}</b></td>
                     <td align="center"><Button variant="primary"  size="md" onClick={()=>{
                         clearCart();
                         }}>Finalizar compra</Button></td>

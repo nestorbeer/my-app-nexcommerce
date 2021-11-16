@@ -1,11 +1,12 @@
 import { useParams } from 'react-router';
 import { useEffect, useState } from "react";
 import Item from "../components/Item";
-import {products} from '../Products'
 import './ItemDetailContainer.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {  Col, Container, Row } from 'react-bootstrap';
 import Loader from '../components/loader';
+import { getFirestore } from "../firebase";
+import {collection,query,where,getDocs} from "firebase/firestore";
 
 function ItemListContainer(props)
 {
@@ -13,7 +14,7 @@ function ItemListContainer(props)
     const [items, setItems] = useState();
     const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
+    /*useEffect(()=>{
         const task = new Promise((resolve,reject) => {
             //Load de productos de una api
             setTimeout(()=>{
@@ -26,10 +27,29 @@ function ItemListContainer(props)
             setLoading(false)
             }
         )
-    },[categoryId]);
-
+    },[categoryId]);*/
+    
+    //Recupero de la base los productos filtrando por categoria    
+    useEffect(()=>{
+        const db = getFirestore();
+        const q = query(
+          collection(db, "items"),
+           where("categoryId", "==", categoryId),
+        );
+        getDocs(q).then((snapshot) => {
+            setItems(
+              snapshot.docs.map((doc) => {
+                const newDoc = { ...doc.data() };
+                return newDoc;
+              })
+            );
+            setLoading(false)
+          });
+      },[categoryId])
     return(
-        <Container fluid>
+        <Container style={{ paddingLeft:'0rem', paddingRight:'0rem', fontFamily:'Road Rage, cursive' }}>
+          <div style={{ width: '100vm',textAlign:'center', backgroundColor:'black', color:'grey' }}>ENVÍO GRATIS A PARTIR DE $6000, 6 CUOTAS SIN INTE. | ¡PRIMER CAMBIO GRATIS! </div>
+          <br/>
           <Row>
             {
                 items?.filter(item => parseInt(item.categoryId) === parseInt(categoryId))

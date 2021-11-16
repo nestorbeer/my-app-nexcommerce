@@ -26,14 +26,13 @@
 body{
   /* background-image: url('https://images.unsplash.com/photo-1536152470836-b943b246224c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80'); */
   /*background-image: url('https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80');*/
+  background-image: url('https://images.unsplash.com/photo-1557683304-673a23048d34?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80');
   background-size:cover;
 }
 .App-link {
   color: #61dafb;
 }
 .App-container {
-  /* background-image: url("../../assets/abstract-pastel-holographic-textured-background.jpg");
-  background-repeat: repeat; */
   display: flex;
   flex-direction: row;
   justify-content: center;

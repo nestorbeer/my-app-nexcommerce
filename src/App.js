@@ -12,7 +12,6 @@ import Cart from './components/Cart';
 import { Container } from 'react-bootstrap';
 import {CartProvider} from './contexts/CartContext'
 
-
 function App() {
   //const [title, setTitle] = useState('Tienda EL DON.')
   const title = "Tienda EL DON"

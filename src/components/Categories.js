@@ -6,8 +6,9 @@ export const categories  = [
     {code:5, nombre: 'OTROS', page:'/categories/5'},
     {code:6, nombre: 'OFERTAS', page:'/categories/6'}
   ]
-
+  
   function Categories(){
+    
       return categories
   }
   export default Categories
