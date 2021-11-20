@@ -5,10 +5,11 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import { useCart} from '../contexts/CartContext'
-import { Card } from "react-bootstrap";
+import { Card, Table } from "react-bootstrap";
 import { useEffect } from "react";
 import { getFirestore } from "../firebase";
 import {doc,getDoc} from "firebase/firestore";
+import Swal from "sweetalert2";
 
 function ItemDetail(props)
 {
@@ -20,8 +21,9 @@ function ItemDetail(props)
     const onAdd =(id,cantidad)=>{
         setAdded(false)
         const message = addItem(itemId, cantidad, item.stock)
-        alert(message)
+        Swal.fire(message)
     }
+
     useEffect(()=>{
         const db = getFirestore();
         const itemRef = doc(db, "items", itemId);
@@ -38,10 +40,19 @@ function ItemDetail(props)
                 <Card.Img className="detail-img" src={item.url} alt="Card image" style={{width:'60rem'}}/> 
                 <Card className="bg-light" style={{width:'60rem'}}>
                     <Card.Title>Detalle de producto</Card.Title>
-                    <Card.Text>
-                        <p><b>Producto:</b> {item.name}</p>
-                        <p><b>Descripción: </b>{item.name}</p>
-                    </Card.Text>
+                    <Table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p><b>Producto:</b> {item.name}</p>
+                                    <p><b>Stock: </b>{item.stock}{' '}<b>Precio: </b>{item.price}</p>
+                                </td>
+                                <td>
+                                <p><b>Descripción: </b>{item.descripcion}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </Table>
                     <Card.Text>{isAdded? <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/> : <Link to="/cart">Finalizar compra</Link>}</Card.Text>
                 </Card>
             </Card>}

@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import Swal from "sweetalert2";
 
 function ItemCount (props)
 {
@@ -15,7 +16,11 @@ function ItemCount (props)
     const [countIn, setCountIn] = useState(0)
 
     const showErrorMessage=(message)=>{
-        alert(message);
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: message
+          })
     }
 
     const addCount = () => 
@@ -27,7 +32,7 @@ function ItemCount (props)
 
             }
             else{
-                showErrorMessage('Supera el stock.');
+                showErrorMessage('La cantidad requerida supera el stock disponible.');
             }
         }
         else
@@ -55,7 +60,7 @@ function ItemCount (props)
     
     const addProduct = (itemId) =>{
         if(Number(countIn)===0){
-            alert('La cantidad no puede ser cero');
+            showErrorMessage('La cantidad no puede ser cero');
             return
         }
         props.onAdd(itemId, Number(countIn))

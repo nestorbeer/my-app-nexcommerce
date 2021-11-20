@@ -2,6 +2,7 @@ import { addDoc, collection, doc, getFirestore, writeBatch } from '@firebase/fir
 import { useState } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { useCart } from '../contexts/CartContext';
 
 function Cart(props){
@@ -19,15 +20,29 @@ function Cart(props){
     const checkOut = () =>{
         setShowForm(true)
     }
-
+    const showErrorMessage=(message)=>{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: message
+          })
+    }
+    
+    const showSuccessMessage=(message)=>{
+        Swal.fire({
+            icon: 'success',
+            title: '',
+            text: message
+          })
+    }
     const closeOrder = ()=>{
         //Validaciones
         if (!customerEmail || !customerEmail2){
-            alert('Por favor verifique los emails, son requeridos') 
+            showErrorMessage('Por favor verifique los emails, son requeridos') 
             return
         }
         if (customerEmail !== customerEmail2){
-            alert('Por favor verifique los emails, no coinciden') 
+            showErrorMessage('Por favor verifique los emails, no coinciden') 
             return
         }
         
@@ -45,6 +60,7 @@ function Cart(props){
         const orders = collection(db, "orders");
         addDoc(orders, order).then(({id})=>{
             setIdGenerated(id)
+            showSuccessMessage(`La orden  ${id} se genero con exito.` )
         })
 
         //Descuento el stock de los productos en base con batchUpdate asi es mas performante.
@@ -54,6 +70,7 @@ function Cart(props){
             batch.update(docRef, {docRef, stock: parseInt(product.stock) - parseInt(product.cantidad) });
         });
         batch.commit();
+        
         
         //Vacio el carrito asi puede seguir comprando
         clearCart();
@@ -155,7 +172,7 @@ function Cart(props){
                 <Table striped bordered hover variant="light">
                     <thead>
                         <tr>
-                            {idGeretaded&& <td align="center">Gracia por su compra, puede hacer el seguimiento del pedido con el codigo: {idGeretaded}.</td>}
+                            {idGeretaded&& <td align="center">Gracia por su compra, puede hacer el seguimiento del pedido con el codigo: {idGeretaded}</td>}
                         </tr>
                         <tr>
                             
