@@ -9,10 +9,11 @@ export const CartProvider = ({ children }) => {
   
  const [cart, setCart] = useState([]);
  
- const addItem = (id, cantidad) => {
+ const addItem = (id, cantidad, stock) => {
     const productToAdd = products.filter(itemArray => parseInt(id) === parseInt(itemArray.id))
     productToAdd.forEach(element => {
         element.cantidad = cantidad
+        element.stock = stock
     });
 
 

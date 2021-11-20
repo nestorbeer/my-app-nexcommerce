@@ -13,8 +13,7 @@ function Item(props)
     
     const onAdd =(id, cantidad)=>{
         setAdded(false)
-        console.log(props.itemId)
-        const message = addItem(props.itemId, cantidad)
+        const message = addItem(props.itemId, cantidad, props.stock)
         alert(message)
     }
 
@@ -24,7 +23,7 @@ function Item(props)
             <Card.Img style={{ maxHeight: '20rem' }} alt="" src={props.itemUrl} position='top'></Card.Img>
             <Card.Text className="cardTitle">
             {props.name}
-            <p>{(props.stock>0)? "Stock: " + props.stock:'Te quedaste sin stock' }</p> 
+            <p>{(props.stock>0)? "Stock: " + props.stock:'Sin stock' }  ${props.price}</p> 
             <ItemCount stock={props.stock} initial={props.initial} itemId={props.itemId} onAdd={onAdd}/>
             {isAdded?<Link to={'/items/' + props.itemId}>Ver detalle</Link>:<Link to="/cart">Finalizar compra</Link> }
             </Card.Text>

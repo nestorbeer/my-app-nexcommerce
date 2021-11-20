@@ -18,9 +18,8 @@ function ItemDetail(props)
     const [item, setItem] = useState(null);
 
     const onAdd =(id,cantidad)=>{
-        //console.log('Item' + cantidad)
         setAdded(false)
-        const message = addItem(itemId, cantidad)
+        const message = addItem(itemId, cantidad, item.stock)
         alert(message)
     }
     useEffect(()=>{

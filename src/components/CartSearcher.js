@@ -8,10 +8,10 @@ function CartSearcher(props)
 {
     const logoSearch = <FontAwesomeIcon icon={faSearch} onClick={()=>{setShowHide(!showHide)}} />
     const [showHide, setShowHide] = useState(false);
-    const [filter, setFilter] = useState(null);
+    const [filter, setFilter] = useState('');
     return(
         <div className="Cart-container">
-            {showHide&&<input style={{ maxWidth: '', textAlign:"center" }} onChange={event => setFilter(event.target.value)} value={filter}/>}
+            {showHide&&<input placeholder="Producto" style={{ maxWidth: '400px', textAlign:"center" }} onChange={event => setFilter(event.target.value)} value={filter}/>}{' '}
             {logoSearch}
         </div>
     )

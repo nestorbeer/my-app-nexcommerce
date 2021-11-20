@@ -25,3 +25,18 @@
   .nav-container{
     width: 100vw;
   }
+  .catego {
+    background-color: rgb(3, 128, 9);
+    color:white !important;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  
+  .catego:hover {
+    background-color: #555;
+    color: white;
+  }
+  
+  .catego:active {
+    background-color: black;
+  }

@@ -14,22 +14,6 @@ function ItemListContainer(props)
     const [items, setItems] = useState();
     const [loading, setLoading] = useState(true);
 
-    /*useEffect(()=>{
-        const task = new Promise((resolve,reject) => {
-            //Load de productos de una api
-            setTimeout(()=>{
-                resolve(products);
-            },500);                
-        });
-        task.then(
-            (result) => {
-            setItems(result)
-            setLoading(false)
-            }
-        )
-    },[categoryId]);*/
-    
-    //Recupero de la base los productos filtrando por categoria    
     useEffect(()=>{
         const db = getFirestore();
         const q = query(
@@ -39,21 +23,21 @@ function ItemListContainer(props)
         getDocs(q).then((snapshot) => {
             setItems(
               snapshot.docs.map((doc) => {
-                const newDoc = { ...doc.data() };
+                const newDoc = { ...doc.data(), id: doc.id };
                 return newDoc;
               })
             );
             setLoading(false)
           });
       },[categoryId])
+
     return(
         <Container style={{ paddingLeft:'0rem', paddingRight:'0rem', fontFamily:'Road Rage, cursive' }}>
           <div style={{ width: '100vm',textAlign:'center', backgroundColor:'black', color:'grey' }}>ENVÍO GRATIS A PARTIR DE $6000, 6 CUOTAS SIN INTE. | ¡PRIMER CAMBIO GRATIS! </div>
           <br/>
           <Row>
             {
-                items?.filter(item => parseInt(item.categoryId) === parseInt(categoryId))
-                .map(({ id, name, price, stock, categoryId, url }) => <Col xs={12} md={6} lg={3}><Item key={id} itemId={id} name={name} stock={stock} initial={1} itemUrl={url}/></Col>
+                items?.map(({ id, name, price, stock, categoryId, url }) => <Col xs={12} md={6} lg={3}><Item key={id} itemId={id} name={name} price={price} stock={stock} initial={1} itemUrl={url}/></Col>
                 )
             }
             {loading && <Loader />}
