@@ -7,12 +7,7 @@ import Swal from "sweetalert2";
 
 function ItemCount (props)
 {
-
-    //Stocl inicial
     const [stock] = useState(props.stock)
-    //Cantidad de items a agregar
-
-    //Cantidad ingresada en el textBox
     const [countIn, setCountIn] = useState(0)
 
     const showErrorMessage=(message)=>{
@@ -27,43 +22,28 @@ function ItemCount (props)
     {
         if(countIn !== undefined)
         {
-            if(Number(countIn) < Number(stock)){
-                setCountIn(Number(countIn) + 1)
-
-            }
-            else{
-                showErrorMessage('La cantidad requerida supera el stock disponible.');
-            }
+            if(Number(countIn) < Number(stock))setCountIn(Number(countIn) + 1)
+            else showErrorMessage('La cantidad requerida supera el stock disponible.');
         }
-        else
-        {
-            setCountIn(Number(1));
-        }
+        else setCountIn(Number(1));
     }
 
     const decreaceCount = () =>
     {
         if(countIn !== undefined)
         {
-            if(Number(countIn)> Number(0)){
-                setCountIn(Number(countIn) - 1)
-            }
-            else{
-                showErrorMessage('La cantidad no puede ser menor a cero.');
-            }
+            if(Number(countIn)> Number(0)) setCountIn(Number(countIn) - 1)
+            else showErrorMessage('La cantidad no puede ser menor a cero.');
         }
-        else
-        {
-            setCountIn(Number(1));
-        }
+        else setCountIn(Number(1));
     }
     
     const addProduct = (itemId) =>{
         if(Number(countIn)===0){
             showErrorMessage('La cantidad no puede ser cero');
-            return
+            return;
         }
-        props.onAdd(itemId, Number(countIn))
+        (Number(countIn) <= Number(stock))?props.onAdd(itemId, Number(countIn)):showErrorMessage('La cantidad requerida supera el stock disponible.');
     }
     
     return(

@@ -7,19 +7,16 @@ import ItemListContainer from './containers/ItemListContainer';
 import ItemDetailContainer from './containers/ItemDetailContainer.js';
 import Home from './components/Home';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
-import {categories} from './components/Categories'
 import Cart from './components/Cart';
 import { Container } from 'react-bootstrap';
 import {CartProvider} from './contexts/CartContext'
 
 function App() {
-  //const [title, setTitle] = useState('Tienda EL DON.')
   const title = "Tienda EL DON"
-  
   return (
     <CartProvider>
       <BrowserRouter>
-        <NavBar brand={title} categories={categories}/>
+        <NavBar brand={title}/>
         <Switch>
           <Route exact path="/">
             <Home />
@@ -28,6 +25,9 @@ function App() {
             <Home />
           </Route>
           <Route path="/categories/:categoryId">
+              <ItemListContainer />
+          </Route>
+          <Route path="/filter/:filter">
               <ItemListContainer />
           </Route>
           <Route path="/items/:itemId" >

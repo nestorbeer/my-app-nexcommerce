@@ -56,6 +56,7 @@ function ItemDetail(props)
                     <Card.Text>{isAdded? <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/> : <Link to="/cart">Finalizar compra</Link>}</Card.Text>
                 </Card>
             </Card>}
+            
         </div>
     )
 }

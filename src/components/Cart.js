@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useCart } from '../contexts/CartContext';
 
-function Cart(props){
+function Cart(){
     const {cart, getQuantity, getTotal, clearCart} = useCart();
     const {removeItem} = useCart();
     const quantity = getQuantity();
@@ -36,7 +36,6 @@ function Cart(props){
           })
     }
     const closeOrder = ()=>{
-        //Validaciones
         if (!customerEmail || !customerEmail2){
             showErrorMessage('Por favor verifique los emails, son requeridos') 
             return
@@ -46,33 +45,23 @@ function Cart(props){
             return
         }
         
-        //Construye el objeto order
         const order = {
             buyer:{name: customerName,phone: customerPhone,email: customerEmail},
             items:cart,
             total:total
         }
-
-        //Creo la instancia de la coleccion
         const db = getFirestore();
-        
-        //Genero la orden con todos los datos
         const orders = collection(db, "orders");
         addDoc(orders, order).then(({id})=>{
             setIdGenerated(id)
             showSuccessMessage(`La orden  ${id} se genero con exito.` )
         })
-
-        //Descuento el stock de los productos en base con batchUpdate asi es mas performante.
         const batch = writeBatch(db);
         cart.forEach(product => {
             const docRef = doc(db, "items", product.id);
             batch.update(docRef, {docRef, stock: parseInt(product.stock) - parseInt(product.cantidad) });
         });
         batch.commit();
-        
-        
-        //Vacio el carrito asi puede seguir comprando
         clearCart();
     }
 
@@ -123,7 +112,7 @@ function Cart(props){
                 <tbody>
                 {
                     cart.map(({id, name, cantidad, price})=>
-                        <tr>
+                        <tr key={id}>
                             <td>
                                 {id}
                             </td>

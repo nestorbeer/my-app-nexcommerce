@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { getFirestore } from "../firebase";
 import {collection,query,getDocs} from "firebase/firestore";
+import Loader from './loader';
 
 function NavBar(props) {
   const [categories, setCategories] = useState(null)
@@ -42,6 +43,9 @@ function NavBar(props) {
                   <Nav className="me-auto">
                   { 
                     categories && categories.map((category, index) =><Link key={index} className="catego" to={category.page}>{category.nombre}</Link>)      
+                  }
+                  {
+                    !categories&&<Loader/>
                   }
                 </Nav>
                 <CartSearcher></CartSearcher>

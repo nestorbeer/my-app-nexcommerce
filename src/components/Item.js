@@ -23,8 +23,8 @@ function Item(props)
             <Card.Body>
             <Card.Img style={{ maxHeight: '20rem' }} alt="" src={props.itemUrl} position='top'></Card.Img>
             <Card.Text className="cardTitle">
-            {props.name}
-            {(props.stock>0)? "Stock: " + props.stock:'Sin stock' }  ${props.price}
+            {props.name} <br/>
+            {(props.stock>0)? "Stock: " + props.stock:'Sin stock' }  Precio ${props.price}
             <ItemCount stock={props.stock} initial={props.initial} itemId={props.itemId} onAdd={onAdd}/>
             {isAdded?<Link to={'/items/' + props.itemId}>Ver detalle</Link>:<Link to="/cart">Finalizar compra</Link> }
             </Card.Text>
