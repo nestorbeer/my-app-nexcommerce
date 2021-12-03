@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Item from "../components/Item";
 import './ItemDetailContainer.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {  Container, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import Loader from '../components/loader';
 import { getFirestore } from "../firebase";
 import {collection,query,where,getDocs} from "firebase/firestore";
@@ -40,7 +40,7 @@ function ItemListContainer(props)
                 )
                 getDocs(q).then((snapshot) => {
                     setItems(
-                      snapshot.docs.filter(doc=>doc.data().name.includes(filter)).map((doc) => {
+                      snapshot.docs.filter(doc=>doc.data().name.toUpperCase().includes(filter.toUpperCase())).map((doc) => {
                         const newDoc = { ...doc.data(), id: doc.id };
                         return newDoc;
                       })
@@ -52,17 +52,15 @@ function ItemListContainer(props)
       },[categoryId,filter])
 
     return(
-        <div>
-        <p style={{ width: '100vm',textAlign:'center', backgroundColor:'black', color:'grey' }}>ENVÍO GRATIS A PARTIR DE $6000, 6 CUOTAS SIN INTE. | ¡PRIMER CAMBIO GRATIS! </p>
-            <Container>
+        <div style={{ width: '100vm',textAlign:'center'}}>
+            <p style={{ width: '100vm',textAlign:'center', backgroundColor:'black', color:'grey' }}>ENVÍO GRATIS A PARTIR DE $6000, 6 CUOTAS SIN INTE. | ¡PRIMER CAMBIO GRATIS! </p>
             <Row>
                 {
-                    items?.map(({ id, name, price, stock, categoryId, url }) => <Item key={id} itemId={id} name={name} price={price} stock={stock} initial={1} itemUrl={url}/>
+                    items?.map(({ id, name, price, stock, url }) => <Item key={id} itemId={id} name={name} price={price} stock={stock} initial={1} itemUrl={url}/>
                     )
                 }
                 {loading && <Loader />}
                 </Row>
-            </Container>
         </div>
         
     )

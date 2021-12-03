@@ -33,7 +33,7 @@ function NavBar(props) {
 
   return (
   <div className="nav-container">
-          <Navbar bg="secondary" expand="lg">
+          <Navbar bg="secondary" expand="lg" collapseOnSelect>
           <Container>
           <Navbar.Brand as={Link} to="/home">
                 <Image alt="" src={logoElDon} width="60" height="30" className="d-inline-block align-top"/> {' '}

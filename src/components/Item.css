@@ -19,8 +19,9 @@
   }
   .card{
     color: blue;
-
     border-color: gray;
+    background-color: rgb(214, 211, 214);;
+    padding: 0.5rem;
 
   }
   .cardTitle{
@@ -28,5 +29,16 @@
   }
   .descripcion {
     width: 10rem;
+  }
+
+  .linkDetalle{
+    background-color: rgb(3, 128, 9);
+    color:white !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1rem;
+    font-family: Arial, sans-serif!important;
+    
+    font-size: 0.85em; padding: 0.5em 1em; border-radius: 5px;
   }
    

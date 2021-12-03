@@ -1,4 +1,6 @@
 import { addDoc, collection, doc, getFirestore, writeBatch } from '@firebase/firestore';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -100,7 +102,7 @@ function Cart(){
             }
             <Table striped bordered hover variant="dark">
                 <thead>
-                    <tr>
+                    <tr align="center">
                         <th>#</th>
                         <th >Producto</th>
                         <th>Cantidad</th>
@@ -113,13 +115,13 @@ function Cart(){
                 {
                     cart.map(({id, name, cantidad, price})=>
                         <tr key={id}>
-                            <td>
+                            <td align="center">
                                 {id}
                             </td>
                             <td>
                                 {name}
                             </td>
-                            <td>
+                            <td align="right">
                                 {cantidad}
                             </td>
                             <td align="right">
@@ -129,9 +131,10 @@ function Cart(){
                                 {'$' + price * cantidad}
                             </td>
                             <td align="center">
-                                <Button variant="primary"  size="xs" onClick={()=>{
-                                    removeItem(id);
-                                }}>Quitar</Button>
+                                    <FontAwesomeIcon icon={faTrashAlt} onClick={()=>{
+                                        removeItem(id);
+                                    }}/>
+                               
                             </td>
                         </tr>
                         
@@ -145,8 +148,8 @@ function Cart(){
                     <td></td>
                     <td align="right"><b>{'$' +total}</b></td>
                     <td align="center">
-                        {!showForm&&<Button variant="primary"  size="md" onClick={()=>{checkOut()}}>Check out</Button>}
-                        {showForm&&<Button variant="primary"  size="md" onClick={()=>{closeOrder()}}>Finalizar compra</Button>}
+                        {!showForm&&<Button variant="primary"  size="md" onClick={()=>{checkOut()}}>Realizar compra</Button>}
+                        {showForm&&<Button variant="primary"  size="md" onClick={()=>{closeOrder()}}>Finalizar</Button>}
                     </td>
                     </tr>
                 </tfoot>

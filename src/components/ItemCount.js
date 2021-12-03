@@ -50,9 +50,9 @@ function ItemCount (props)
         <Container className="count-container">
             <Row>
                 <Col size="xs">
-                    <FontAwesomeIcon icon={faMinus} onClick={decreaceCount} style={{fontSize: 'x-large'}} />{' '}
+                    <FontAwesomeIcon icon={faMinus} onClick={decreaceCount} style={{fontSize: 'large'}} />{' '}
                         <input style={{ maxWidth: '2.5rem', textAlign:"center" }} onChange={event => setCountIn(event.target.value)} value={countIn}/>{' '}
-                    <FontAwesomeIcon icon={faPlus} onClick={addCount} style={{fontSize: 'x-large'}} />
+                    <FontAwesomeIcon icon={faPlus} onClick={addCount} style={{fontSize: 'large'}} />
                 </Col>
             </Row>
             <Button variant="primary"  size="md" onClick={()=>{
