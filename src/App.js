@@ -10,6 +10,7 @@ import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import Cart from './components/Cart';
 import { Container } from 'react-bootstrap';
 import {CartProvider} from './contexts/CartContext'
+import OrderDetail from './components/OrderDetail';
 
 function App() {
   const title = "Tienda EL DON"
@@ -34,6 +35,9 @@ function App() {
             <div className="App-container">
               <ItemDetailContainer/>
             </div>
+          </Route>
+          <Route path="/orders/:orderId" >
+              <OrderDetail/>
           </Route>
           <Route exact path="/cart" >
               <Cart/>

@@ -19,7 +19,7 @@ function CartSearcher(props)
 
     return(
         <div className="Cart-container">
-            {<input placeholder="Producto" style={{ maxWidth: '400px', textAlign:"center" }} onChange={event=> setFilter(event.target.value)} onKeyPress={event => handleFilter(event, event.target.value)} value={filter}/>}{' '}
+            {<input placeholder="Buscar producto" style={{ maxWidth: '400px', textAlign:"center" }} onChange={event=> setFilter(event.target.value)} onKeyPress={event => handleFilter(event, event.target.value)} value={filter}/>}{' '}
             {logoSearch}
         </div>
     )

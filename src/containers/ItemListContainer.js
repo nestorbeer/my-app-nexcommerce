@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import Item from "../components/Item";
 import './ItemDetailContainer.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import Loader from '../components/loader';
 import { getFirestore } from "../firebase";
 import {collection,query,where,getDocs} from "firebase/firestore";
+import Swal from 'sweetalert2';
 
 function ItemListContainer(props)
 {
@@ -54,13 +55,17 @@ function ItemListContainer(props)
     return(
         <div style={{ width: '100vm',textAlign:'center'}}>
             <p style={{ width: '100vm',textAlign:'center', backgroundColor:'black', color:'grey' }}>ENVÍO GRATIS A PARTIR DE $6000, 6 CUOTAS SIN INTE. | ¡PRIMER CAMBIO GRATIS! </p>
-            <Row>
+            <Container >
+                <Row style={{ width: '100vm',textAlign:'center !important' }}>
                 {
                     items?.map(({ id, name, price, stock, url }) => <Item key={id} itemId={id} name={name} price={price} stock={stock} initial={1} itemUrl={url}/>
                     )
                 }
                 {loading && <Loader />}
                 </Row>
+            </Container>
+            <br/>
+            
         </div>
         
     )

@@ -20,7 +20,7 @@ function ItemDetail(props)
 
     const onAdd =(id,cantidad)=>{
         setAdded(false)
-        const message = addItem(itemId, cantidad, item.stock)
+        const message = addItem(itemId, cantidad, item.stock, item.name, item.price)
         Swal.fire(message)
     }
 
@@ -53,7 +53,7 @@ function ItemDetail(props)
                             </tr>
                         </tbody>
                     </Table>
-                    <Card.Text>{isAdded? <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/> : <Link to="/cart">Finalizar compra</Link>}</Card.Text>
+                    <Card.Text>{isAdded? <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/> : <Link className="linkCloseOrder" to="/cart">Finalizar compra</Link>}</Card.Text>
                 </Card>
             </Card>}
             

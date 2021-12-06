@@ -14,12 +14,14 @@ function Item(props)
     
     const onAdd =(id, cantidad)=>{
         setAdded(false)
-        const message = addItem(props.itemId, cantidad, props.stock)
+        console.log('Item')
+        console.log(props.itemId)
+        const message = addItem(props.itemId, cantidad, props.stock, props.name, props.price)
         Swal.fire(message)
     }
 
     return(
-        <Card xs={12} md={6} style={{ maxWidth: '23rem' }}>
+        <Card xs={12} md={6} lg={3} xl={4} style={{ maxWidth: '20rem', borderRadius:'1rem' }}>
             <Card.Body>
             <Card.Img style={{ maxHeight: '20rem' }} alt="" src={props.itemUrl} position='top'></Card.Img>
             <Card.Text className="cardTitle">
@@ -27,7 +29,7 @@ function Item(props)
             {(props.stock>0)? "Stock: " + props.stock:'Sin stock' }  Precio ${props.price}
             <br/>
             <br/>
-            <ItemCount stock={props.stock} initial={props.initial} itemId={props.itemId} onAdd={onAdd}/>
+            {isAdded&&<ItemCount stock={props.stock} initial={props.initial} itemId={props.itemId} onAdd={onAdd}/>}
             {isAdded?<Link className="linkDetalle" to={'/items/' + props.itemId}>Ver detalle</Link>:<Link className="linkDetalle" to="/cart">Finalizar compra</Link> }
             </Card.Text>
             </Card.Body>

@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { getFirestore } from "../firebase";
 import {collection,query,getDocs} from "firebase/firestore";
 import Loader from './loader';
+import OrderSearcher from './OrderSearcher';
 
 function NavBar(props) {
   const [categories, setCategories] = useState(null)
@@ -48,6 +49,7 @@ function NavBar(props) {
                     !categories&&<Loader/>
                   }
                 </Nav>
+                <OrderSearcher></OrderSearcher>
                 <CartSearcher></CartSearcher>
                 <Link style={{textDecoration: 'none' }} to="/cart"><CarttWidget quantity={props.quantity} add={props.add} decreace={props.decreace} className="d-flex"/></Link>
                 </Navbar.Collapse>

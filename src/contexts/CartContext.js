@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { products } from "../Products";
 
 const CartContext = createContext();
 
@@ -9,12 +8,16 @@ export const CartProvider = ({ children }) => {
   
  const [cart, setCart] = useState([]);
  
- const addItem = (id, cantidad, stock) => {
-    const productToAdd = products.filter(itemArray => parseInt(id) === parseInt(itemArray.id))
-    productToAdd.forEach(element => {
+ const addItem = (id, cantidad, stock, name, price) => {
+    console.log('AddItem')
+    console.log(id)
+    //const productToAdd = products.filter(itemArray => id === itemArray.id)
+    const productToAdd = {id:id, cantidad:cantidad, stock:stock, name:name, price:price}
+    console.log(productToAdd)
+    /*productToAdd.forEach(element => {
         element.cantidad = cantidad
         element.stock = stock
-    });
+    });*/
 
 
     if(!isInCart(id)){
@@ -28,7 +31,7 @@ export const CartProvider = ({ children }) => {
 
 const removeItem = (idItem) => {
     // remover el Item del array y setear el cart
-    const newCart = cart.filter(itemArray=>parseInt(idItem) !== parseInt(itemArray.id))
+    const newCart = cart.filter(itemArray=>idItem !== itemArray.id)
     setCart(newCart)
 }
 

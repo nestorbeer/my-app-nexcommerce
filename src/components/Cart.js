@@ -6,6 +6,7 @@ import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useCart } from '../contexts/CartContext';
+import './Cart.css';
 
 function Cart(){
     const {cart, getQuantity, getTotal, clearCart} = useCart();
@@ -168,7 +169,7 @@ function Cart(){
                         </tr>
                         <tr>
                             
-                            <td align="center"><Link to="/home">El carrito esta vacio, continuar comprando</Link></td>
+                            <td align="center"><Link className="linkEmptyCart" to="/home">El carrito esta vacio, continuar comprando</Link></td>
                         </tr>
                     </thead>
                 </Table>
