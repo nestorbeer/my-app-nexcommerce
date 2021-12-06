@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
@@ -47,18 +47,16 @@ function ItemCount (props)
     }
     
     return(
-        <Container className="count-container">
-            <Row>
-                <Col size="xs">
-                    <FontAwesomeIcon icon={faMinus} onClick={decreaceCount} style={{fontSize: 'large'}} />{' '}
-                        <input style={{ maxWidth: '2.5rem', textAlign:"center" }} onChange={event => setCountIn(event.target.value)} value={countIn}/>{' '}
-                    <FontAwesomeIcon icon={faPlus} onClick={addCount} style={{fontSize: 'large'}} />
-                </Col>
-            </Row>
-            <Button variant="primary"  size="md" onClick={()=>{
-                addProduct(props.itemId);
-            }}>Agregar </Button>
-        </Container>
+    <>
+        <FontAwesomeIcon icon={faMinus} onClick={decreaceCount} style={{fontSize: 'large'}} />{' '}
+        <input style={{ maxWidth: '2.5rem', textAlign:"center" }} onChange={event => setCountIn(event.target.value)} value={countIn}/>{' '}
+        <FontAwesomeIcon icon={faPlus} onClick={addCount} style={{fontSize: 'large'}} />
+        <br/>
+        <Button variant="primary"  size="md" onClick={()=>{
+            addProduct(props.itemId);
+        }}>Agregar </Button>
+        <br/>
+    </>
     )
 }
 

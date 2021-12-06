@@ -1,5 +1,11 @@
+import { Container } from "react-bootstrap";
+
 function Loader(){
-    return <div> loading </div>
+    return( 
+        <Container style={{textAlign:'center', fontSize:'20px'}}>
+            Cargando....
+        </Container>
+    )
 }
 
 export default Loader;

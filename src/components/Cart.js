@@ -51,7 +51,9 @@ function Cart(){
         const order = {
             buyer:{name: customerName,phone: customerPhone,email: customerEmail},
             items:cart,
-            total:total
+            total:total,
+            date: Date(),
+            status:'created'
         }
         const db = getFirestore();
         const orders = collection(db, "orders");

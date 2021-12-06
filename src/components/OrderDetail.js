@@ -11,10 +11,10 @@ function OrderDetail(){
     useEffect(()=>{
         const db = getFirestore();
         const itemRef = doc(db, "orders", orderId);
+        setOrder()
         getDoc(itemRef).then((snapshot) => {
             if (snapshot.exists()) {
                 setOrder(snapshot.data());
-                console.log(order)
             }
         });
         
@@ -22,13 +22,17 @@ function OrderDetail(){
       return(
           <>
             <br/>
-            {order && <Table striped bordered hover variant="light">
+            {order && <Table striped bordered hover variant="dark">
                     <thead>
                         <tr style={{textAlign:'center'}}>
-                            <th colSpan="2">Detalle de la orden <b>{orderId}</b></th>
+                            <th colSpan="2">Detalle de la orden:  <b>{orderId}</b></th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>Fecha</td>
+                            <td>{order.date}</td>
+                        </tr>
                           <tr>
                             <td>Nombre</td>
                             <td>{order.buyer.name}</td>
@@ -43,10 +47,15 @@ function OrderDetail(){
                         </tr>
                         <tr>
                             <td>Total</td>
-                            <td>{order.total}</td>
+                            <td>${order.total}</td>
+                        </tr>
+                        <tr>
+                            <td>Estado</td>
+                            <td>{order.status}</td>
                         </tr>
                     </tbody>
             </Table>}
+            {!order&&<h1 style={{textAlign:'center'}}>No se encontro ninguna orden con ese código</h1>}
           </>
       )
 }

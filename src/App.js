@@ -21,9 +21,13 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+            <br/>
+            <ItemListContainer isHome="true"/>
           </Route>
           <Route exact path="/home">
             <Home />
+            <br/>
+            <ItemListContainer isHome="true"/>
           </Route>
           <Route path="/categories/:categoryId">
               <ItemListContainer />

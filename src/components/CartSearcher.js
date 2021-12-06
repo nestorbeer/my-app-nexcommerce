@@ -13,7 +13,7 @@ function CartSearcher(props)
 
     const handleFilter =(event, filter)=>{
         if (event.key === 'Enter') {
-            (filter)?history.push(`/filter/${filter}`):history.push("/");
+            (filter)?history.push(`/filter/${filter}`):history.push("/filter/nps");
         }
     }
 

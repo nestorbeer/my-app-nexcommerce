@@ -5,11 +5,12 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import { useCart} from '../contexts/CartContext'
-import { Card, Table } from "react-bootstrap";
+import { Card} from "react-bootstrap";
 import { useEffect } from "react";
 import { getFirestore } from "../firebase";
 import {doc,getDoc} from "firebase/firestore";
 import Swal from "sweetalert2";
+
 
 function ItemDetail(props)
 {
@@ -17,6 +18,7 @@ function ItemDetail(props)
     const [isAdded, setAdded] = useState(true);
     const {addItem} = useCart();
     const [item, setItem] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const onAdd =(id,cantidad)=>{
         setAdded(false)
@@ -31,33 +33,26 @@ function ItemDetail(props)
             if (snapshot.exists()) {
                 setItem(snapshot.data());
             }
+            setLoading(false)
         });
 
       },[itemId])
     return(
-        <div className="item-detail">
-            {item && <Card className="bg-dark text-dark">
-                <Card.Img className="detail-img" src={item.url} alt="Card image" style={{width:'60rem'}}/> 
-                <Card className="bg-light" style={{width:'60rem'}}>
-                    <Card.Title>Detalle de producto</Card.Title>
-                    <Table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p><b>Producto:</b> {item.name}</p>
-                                    <p><b>Stock: </b>{item.stock}{' '}<b>Precio: </b>{item.price}</p>
-                                </td>
-                                <td>
-                                <p><b>Descripción: </b>{item.descripcion}</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                    <Card.Text>{isAdded? <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/> : <Link className="linkCloseOrder" to="/cart">Finalizar compra</Link>}</Card.Text>
-                </Card>
-            </Card>}
-            
-        </div>
+    <>
+        {loading&&<h1>Cargando...</h1>}
+        {   item && 
+            <Card className="bg-light text-dark">
+                <Card.Img src={item.url} alt="Card image"/> 
+                    <Card.Title><b>{item.name}</b></Card.Title>
+                    <Card.Text>
+                             {item.descripcion}<br/>
+                            {isAdded? <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/> : <Link className="linkCloseOrder" to="/cart">Finalizar compra</Link>}                                
+                    </Card.Text>
+            </Card>
+        }
+        {!loading&&!item&&<h1>No se entontro ningun producto con ese código</h1>}
+        
+    </>
     )
 }
 export default ItemDetail;
