@@ -28,4 +28,4 @@ Puntos contemplados en el proyecto:
  - Se genera el pedido en firebase, se muestra el codigo de orden generada y se actualizan los stocks mediante proceso batch.
  - Buscador de pedidos generados, y buscador de productos.
  
-![Entrega final del TP](https://firebasestorage.googleapis.com/v0/b/nex-commerce.appspot.com/o/nex-commerce%20final.gif?alt=media&token=2946297a-b055-45b5-9da1-ebbfdcb547cf)
+![Entrega final del TP](https://firebasestorage.googleapis.com/v0/b/nex-commerce.appspot.com/o/ezgif.com-gif-maker.gif?alt=media&token=807d793a-d451-4c4a-a744-373abe3771c3)
