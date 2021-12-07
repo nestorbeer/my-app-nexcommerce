@@ -15,8 +15,8 @@ function OrderSearcher(props)
     }
 
     return(
-        <div className="Cart-container">
-            {<input placeholder="Buscar orden" style={{ maxWidth: '400px', textAlign:"center" }} onChange={event=> setOrder(event.target.value)} onKeyPress={event => handleFilter(event, event.target.value)} value={orderId}/>}{' '}
+        <div className="Cart-container" style={{margin:'2px'}}>
+            {<input placeholder="Buscar orden" style={{ maxWidth: '400px', textAlign:"center",boxShadow: '0 0 25px 0 black' }} onChange={event=> setOrder(event.target.value)} onKeyPress={event => handleFilter(event, event.target.value)} value={orderId}/>}{' '}
         </div>
     )
 }

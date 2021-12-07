@@ -19,10 +19,13 @@ La barra de navegacion tiene un link a la home, una lista de las categorias para
 
 Puntos contemplados en el proyecto:
 
- - Barra de navegaciòn dinamica, recupera las categorias de una coleccion de firebase.
+ - Barra de navegación dinamica, recupera las categorias de una colección de firebase.
  - Home con publicidad y productos destacados, tambien recuperados de firebase.
  - Listado de productos filtrado por categorias, el presionar en una categoria te dirige al listado recuperando de firebase solo los productos que pertenecen a dicha categoria.
  - Detalle de producto recuperando los datos de firebase por id de documento.
- - Finalizacion de compra y check out, se permite visualizar los productos agegados al carrito, mostrando detalles de importes unitarios, cantidades y totales.
+ - Finalización de compra y check out, se permite visualizar los productos agegados al carrito, mostrando detalles de importes unitarios, cantidades y totales.
  - Se permite ingresar los datos para la generaciòn del pedido.
  - Se genera el pedido en firebase, se muestra el codigo de orden generada y se actualizan los stocks mediante proceso batch.
+ - Buscador de pedidos generados, y buscador de productos.
+ 
+![Entrega final del TP](https://firebasestorage.googleapis.com/v0/b/nex-commerce.appspot.com/o/nex-commerce%20final.gif?alt=media&token=2946297a-b055-45b5-9da1-ebbfdcb547cf)

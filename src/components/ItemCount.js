@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 function ItemCount (props)
 {
     const [stock] = useState(props.stock)
-    const [countIn, setCountIn] = useState(0)
+    const [countIn, setCountIn] = useState(1)
 
     const showErrorMessage=(message)=>{
         Swal.fire({
@@ -50,9 +50,8 @@ function ItemCount (props)
     <>
         <FontAwesomeIcon icon={faMinus} onClick={decreaceCount} style={{fontSize: 'large'}} />{' '}
         <input style={{ maxWidth: '2.5rem', textAlign:"center" }} onChange={event => setCountIn(event.target.value)} value={countIn}/>{' '}
-        <FontAwesomeIcon icon={faPlus} onClick={addCount} style={{fontSize: 'large'}} />
-        <br/>
-        <Button variant="primary"  size="md" onClick={()=>{
+        <FontAwesomeIcon icon={faPlus} onClick={addCount} style={{fontSize: 'large'}} /><br/>
+        <Button style={{marginTop:'5px', marginBottom:'5px'}} variant="primary"  size="md" onClick={()=>{
             addProduct(props.itemId);
         }}>Agregar </Button>
         <br/>

@@ -32,7 +32,8 @@
     text-transform: uppercase;
     padding: 1rem;
     font-family: Arial, sans-serif!important;
-    
+    margin: 2px;
+    box-shadow: 0 0 25px 0 black;
     font-size: 0.85em; padding: 0.5em 1em; border-radius: 5px;
   }
   

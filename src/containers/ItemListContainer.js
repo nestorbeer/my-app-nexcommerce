@@ -30,6 +30,7 @@ function ItemListContainer(props)
                 setItems(
                   snapshot.docs.map((doc) => {
                     const newDoc = { ...doc.data(), id: doc.id };
+                    setEncontro(true)
                     return newDoc;
                   })
                 );
@@ -73,17 +74,19 @@ function ItemListContainer(props)
       },[categoryId,filter,props.isHome])
 
     return(
+      <>
+      {!props.isHome&&<p style={{ width: '100vm',textAlign:'center', backgroundColor:'black', color:'grey' }}>ENVÍO GRATIS A PARTIR DE $6000, 6 CUOTAS SIN INTE. | ¡PRIMER CAMBIO GRATIS! </p>}
       <Container>
-        {!props.isHome&&<p style={{ width: '100vm',textAlign:'center', backgroundColor:'black', color:'grey' }}>ENVÍO GRATIS A PARTIR DE $6000, 6 CUOTAS SIN INTE. | ¡PRIMER CAMBIO GRATIS! </p>}
           <Row style={{ width: '100vm',textAlign:'center !important' }}>
           {
               items?.map(({ id, name, price, stock, url }) => <Item key={id} itemId={id} name={name} price={price} stock={stock} initial={1} itemUrl={url}/>
               )
           }
-          {!loading && !encontro&&<h1 style={{textAlign:'center'}} >No se encontro ningun producto para mostrar</h1>}
+          {!loading && !encontro&&<h1 style={{textAlign:'center'}} >No se encontraron productos para mostrar</h1>}
           {loading && <Loader />}
           </Row>
       </Container>
+      </>
     )
 }
 export default ItemListContainer;

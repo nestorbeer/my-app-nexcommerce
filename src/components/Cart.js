@@ -43,7 +43,7 @@ function Cart(){
             showErrorMessage('Por favor verifique los emails, son requeridos') 
             return
         }
-        if (customerEmail !== customerEmail2){
+        if (customerEmail.toUpperCase() !== customerEmail2.toUpperCase()){
             showErrorMessage('Por favor verifique los emails, no coinciden') 
             return
         }
@@ -77,7 +77,7 @@ function Cart(){
              <br/>
              {
                 showForm&&
-                <Table striped bordered hover variant="light">
+                <Table striped bordered hover variant="light" responsive="sm">
                     <thead>
                         <tr>
                             <th colSpan="2">Datos del comprador</th>
@@ -103,10 +103,9 @@ function Cart(){
                     </tbody>
                 </Table>
             }
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover variant="dark" responsive="xl" >
                 <thead>
                     <tr align="center">
-                        <th>#</th>
                         <th >Producto</th>
                         <th>Cantidad</th>
                         <th>Precio unitario</th>
@@ -119,9 +118,6 @@ function Cart(){
                     cart.map(({id, name, cantidad, price})=>
                         <tr key={id}>
                             <td align="center">
-                                {id}
-                            </td>
-                            <td>
                                 {name}
                             </td>
                             <td align="right">
@@ -145,8 +141,7 @@ function Cart(){
                 </tbody>
                 <tfoot>
                     <tr>
-                    <td></td>
-                    <td><b>Total de la compra</b></td>
+                    <td align="center"><b>Total de la compra</b></td>
                     <td></td>
                     <td></td>
                     <td align="right"><b>{'$' +total}</b></td>

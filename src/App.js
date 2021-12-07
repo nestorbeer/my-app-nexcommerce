@@ -11,6 +11,7 @@ import Cart from './components/Cart';
 import { Container } from 'react-bootstrap';
 import {CartProvider} from './contexts/CartContext'
 import OrderDetail from './components/OrderDetail';
+import Footer from './components/Footer';
 
 function App() {
   const title = "Tienda EL DON"
@@ -50,6 +51,7 @@ function App() {
               <Container><h1><b>Page not found 404</b></h1></Container>
           </Route>
         </Switch>
+        <Footer/>
       </BrowserRouter>
     </CartProvider>
   );
